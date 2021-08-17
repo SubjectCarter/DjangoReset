@@ -12,12 +12,19 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 
 export default class CreateRoomPage extends Component {
+  defaultVotes = 2;
+
   constructor(props) {
     super(props);
   }
 
   render() {
-    return <p>This is the create room page</p>;
+    return <Grid container spacing={1}>
+      <Grid item xs={12} align="center"></Grid>
+        <Typography component="h4" varient="h4">
+          Create A Room
+        </Typography>
+    </Grid>;
   }
 
 
