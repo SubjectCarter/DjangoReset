@@ -1,6 +1,0 @@
-Within music_controller/frontend
-npm run dev
-Run the aboce in a seperat bash terminal
-
-
-Run server
