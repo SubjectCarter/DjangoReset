@@ -1,0 +1,21 @@
+from VS Code Install extensions.
+python, django, React, Html5 
+
+
+python install
+install from https://www.python.org/downloads/
+Pip install direct visual studio extensions
+
+install Brew for NPM install
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+install Node.js     //this allows the npm run dev command
+    brew update
+    brew install node
+
+install from Terminal.
+    brew install python3
+    python3 -m pip install Django
+    pip3 install djangorestframework
+    pip3 install markdown  
+    pip3 install django-filter
