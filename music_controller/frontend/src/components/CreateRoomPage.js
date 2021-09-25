@@ -10,7 +10,7 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { Collapse } from "@material-ui/core";
-import Alert from "@material-ui/lab/Alert"
+import Alert from "@material-ui/lab/Alert";
 
 export default class CreateRoomPage extends Component {
   static defaultProps = {
@@ -20,9 +20,6 @@ export default class CreateRoomPage extends Component {
     roomCode: null,
     updateCallback: () => {},
   };
-
-
-  defaultVotes = 2;
 
   constructor(props) {
     super(props);
@@ -65,43 +62,6 @@ export default class CreateRoomPage extends Component {
       .then((data) => this.props.history.push("/room/" + data.code));
   }
 
-
-
-  renderCreateButtons(){
-    return( 
-    <Grid container spacing={1}>
-      <Grid item xs={12} align="center">
-      <Button
-        color="primary"
-        variant="contained"
-        onClick={this.handleRoomButtonPressed}
-      >
-        Create A Room
-      </Button>
-    </Grid>
-    <Grid item xs={12} align="center">
-      <Button color="secondary" variant="contained" to="/" component={Link}>
-        Back
-      </Button>
-    </Grid>
-    </Grid>
-  );
-  }
-
-  renderUpdateButtons(){
-    return(      
-      <Grid item xs={12} align="center">
-        <Button
-          color="primary"
-          variant="contained"
-          onClick={this.handleUpdateButtonPressed}
-        >
-          Update Room
-        </Button>
-      </Grid>
-    );  
-  }
-
   handleUpdateButtonPressed() {
     const requestOptions = {
       method: "PATCH",
@@ -125,9 +85,41 @@ export default class CreateRoomPage extends Component {
       this.props.updateCallback();
     });
   }
-  
 
+  renderCreateButtons() {
+    return (
+      <Grid container spacing={1}>
+        <Grid item xs={12} align="center">
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={this.handleRoomButtonPressed}
+          >
+            Create A Room
+          </Button>
+        </Grid>
+        <Grid item xs={12} align="center">
+          <Button color="secondary" variant="contained" to="/" component={Link}>
+            Back
+          </Button>
+        </Grid>
+      </Grid>
+    );
+  }
 
+  renderUpdateButtons() {
+    return (
+      <Grid item xs={12} align="center">
+        <Button
+          color="primary"
+          variant="contained"
+          onClick={this.handleUpdateButtonPressed}
+        >
+          Update Room
+        </Button>
+      </Grid>
+    );
+  }
 
   render() {
     const title = this.props.update ? "Update Room" : "Create a Room";
@@ -135,12 +127,28 @@ export default class CreateRoomPage extends Component {
     return (
       <Grid container spacing={1}>
         <Grid item xs={12} align="center">
-          <Collapse in={ this.state.errorMsg != "" || this.state.successMsg != ""}>
+          <Collapse
+            in={this.state.errorMsg != "" || this.state.successMsg != ""}
+          >
             {this.state.successMsg != "" ? (
-              <Alert severity="success" onClose={() => {this.setState({successMsg: ""})}} >{this.state.successMsg}</Alert>
-              ) : (
-              <Alert severity="error" onClose={() => {this.setState({errorMsg: ""})}} >{this.state.errorMsg}</Alert>
-              )}
+              <Alert
+                severity="success"
+                onClose={() => {
+                  this.setState({ successMsg: "" });
+                }}
+              >
+                {this.state.successMsg}
+              </Alert>
+            ) : (
+              <Alert
+                severity="error"
+                onClose={() => {
+                  this.setState({ errorMsg: "" });
+                }}
+              >
+                {this.state.errorMsg}
+              </Alert>
+            )}
           </Collapse>
         </Grid>
         <Grid item xs={12} align="center">
@@ -190,9 +198,9 @@ export default class CreateRoomPage extends Component {
             </FormHelperText>
           </FormControl>
         </Grid>
-        {this.props.update 
-        ? this.renderUpdateButtons() 
-        : this.renderCreateButtons()}
+        {this.props.update
+          ? this.renderUpdateButtons()
+          : this.renderCreateButtons()}
       </Grid>
     );
   }

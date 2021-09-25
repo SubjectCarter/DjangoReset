@@ -12,6 +12,7 @@ install Brew for NPM install
 install Node.js     //this allows the npm run dev command
     brew update
     brew install node
+    npm install webpack 
 
 install from Terminal.
     brew install python3
